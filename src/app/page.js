@@ -6,7 +6,7 @@ import { CheckIcon } from '@heroicons/react/20/solid';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { HomeIcon } from '@heroicons/react/24/outline';
 import { PhoneIcon } from '@heroicons/react/24/outline';
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { AcademicCapIcon, ShieldCheckIcon, DocumentTextIcon, UsersIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { FaFacebookF, FaWhatsapp, FaTwitter, FaEnvelope, FaTimes } from 'react-icons/fa';
@@ -21,6 +21,14 @@ export default function Home() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const [isLinkCopied, setIsLinkCopied] = useState(false);
+
+  const [pageLink, setPageLink] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setPageLink(window.location.href);
+    }
+  }, []);
 
   const openPopup = () => {
     setIsPopupVisible(true);
@@ -43,7 +51,6 @@ export default function Home() {
     "   Therapy helped me build self-esteem and confidence that I never thought possible.",
   ];
 
-  const [pageLink] = useState(window.location.href);
 
   const handleToggleTestimonial = () => setShowMore(!showMore);
 
@@ -61,10 +68,10 @@ export default function Home() {
   };
 
   const goBack = () => {
-    alert("You can't go back")
+    alert("You cannot go back")
   }
 
-  const noShare = () =>{
+  const noShare = () => {
     alert("Sorry, these functionalities are not functional yet")
   }
 
@@ -128,7 +135,7 @@ export default function Home() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-900">About Me</h2>
           <div className="text-black text-sm pr-36">
-            <p className="my-2">Hello, I'm Swetha, a licensed therapist dedicated to guiding individuals through life's challenges with empathy and expertise. With over 4 years of experience, I specialize in helping clients manage anxiety, depression, and relationship issues through personalized, evidence-based practices.</p>
+            <p className="my-2">Hello, I&apos;m Swetha, a licensed therapist dedicated to guiding individuals through life&apos;s challenges with empathy and expertise. With over 4 years of experience, I specialize in helping clients manage anxiety, depression, and relationship issues through personalized, evidence-based practices.</p>
 
             {/* This second paragraph is initially hidden */}
             <p className={`transition-all duration-300 my-2 ${isExpanded ? "block" : "hidden"}`}>
@@ -233,7 +240,7 @@ export default function Home() {
             {testimonials.slice(0, showMore ? testimonials.length : 2).map((testimonial, index) => (
               <div key={index} className="bg-white p-4 px-16 py-12 my-6 mx-6 rounded-lg shadow-2xl">
                 <FaQuoteLeft className="text-2xl text-[#92c2f7] my-2" />
-                <p className="text-gray-700 font-bold text-sm my-1">"{testimonial}"</p>
+                <p className="text-gray-700 font-bold text-sm my-1">&quot;{testimonial}&quot;</p>
                 <p className="text-gray-700 font-bold text-sm my-2">Anonymous</p>
               </div>
             ))}
@@ -298,7 +305,7 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
