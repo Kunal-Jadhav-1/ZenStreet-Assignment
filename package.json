@@ -12,7 +12,8 @@
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "next": "15.0.3",
-    "@heroicons/react": "^2.x.x"
+    "@heroicons/react": "^2.x.x",
+    "react-icons": "^4.10.1"
   },
   "devDependencies": {
     "postcss": "^8",
