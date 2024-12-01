@@ -6,10 +6,11 @@ import { CheckIcon } from '@heroicons/react/20/solid';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { HomeIcon } from '@heroicons/react/24/outline';
 import { PhoneIcon } from '@heroicons/react/24/outline';
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AcademicCapIcon, ShieldCheckIcon, DocumentTextIcon, UsersIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { FaFacebookF, FaWhatsapp, FaTwitter, FaEnvelope, FaTimes } from 'react-icons/fa';
+import Link from "next/link";
 
 
 
@@ -124,9 +125,9 @@ export default function Home() {
         </div>
 
         {/* Book Session Button */}
-        <button className="self-center w-[75%] rounded-full bg-[white] text-[#1f9fe6] py-2 hover:bg-gray-100">
-          Book session
-        </button>
+        <Link href="/prices" className="self-center text-center font-semibold w-[75%] rounded-full bg-[white] text-[#1f9fe6] py-3 hover:bg-gray-100">
+            Book session
+        </Link>
       </div>
 
       {/* Right Column with Scroll */}
