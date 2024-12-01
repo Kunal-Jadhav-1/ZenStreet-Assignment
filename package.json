@@ -14,7 +14,7 @@
     "next": "15.0.3",
     "@heroicons/react": "^2.x.x",
     "react-icons": "^4.10.1",
-    "react-calendar": "^3.3.0"
+    "react-calendar": "^5.1.0"
   },
   "devDependencies": {
     "postcss": "^8",
