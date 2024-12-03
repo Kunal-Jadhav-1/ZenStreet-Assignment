@@ -2,10 +2,11 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 
 function Check_Out() {
   const [checkbox, setCheckbox] = useState(false);
+  const [verify, setVerify] = useState(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,9 +18,20 @@ function Check_Out() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
+
   const type = searchParams.get("type");
   const date = searchParams.get("date");
-  console.log(date);
+  const mode = searchParams.get("mode");
+  const selectedSlotsRaw = searchParams.getAll("selectedSlots");
+  const selectedSlots = selectedSlotsRaw.length > 0 ? selectedSlotsRaw : [];
+
+  useEffect(() => {
+    if ((formData.compId === "100" && checkbox) || !checkbox) {
+      setNextPage("accepted");
+    } else {
+      setNextPage("rejected");
+    }
+  }, [formData.compId]);
 
   const handleCheckbox = () => {
     setCheckbox(!checkbox);
@@ -35,26 +47,40 @@ function Check_Out() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.compId === "100") {
-      setNextPage("accepted");
-    } else {
-      setNextPage("rejected");
-    }
   };
 
   const isFormValid = () => {
     return (
-      formData.firstName &&
-      formData.lastName &&
-      formData.email &&
-      formData.phone &&
-      (!checkbox || formData.compId)
+      (formData.firstName &&
+        formData.lastName &&
+        formData.email &&
+        formData.phone &&
+        verify === true) ||
+      (formData.firstName &&
+        formData.lastName &&
+        formData.email &&
+        formData.phone)
     );
+  };
+
+  const handleVerify = () => {
+    if (formData.compId === "100" && checkbox) {
+      setVerify(true);
+    } else {
+      setVerify(false);
+    }
   };
 
   const navigateToNextPage = () => {
     router.push(`/prices/booking/checkout/${nextPage}`);
   };
+
+  const dateArr = date.split(" ");
+
+  console.log(selectedSlots);
+
+  const time1 = selectedSlots[0].split("-");
+  const time2 = selectedSlots[selectedSlots.length - 1].split("-");
 
   return (
     <>
@@ -68,12 +94,23 @@ function Check_Out() {
             <ArrowLeftIcon className="w-8 h-8 items-center" />
           </Link>
         </div>
-        <div className="flex justify-between items-center bg-blue-500 text-white p-4 rounded-t-xl px-8">
+        <div className="flex justify-between items-center bg-blue-500 text-white py-4 rounded-t-xl px-6">
           <div>
-            <div className="text-sm">Sat, 06 Aug</div>
-            <div className="text-xs">3:30 PM - 4:20 PM</div>
+            <div className="text-sm">{dateArr[0]}</div>
+            <div className="text-sm">
+              {dateArr[1]} {dateArr[2]}, {dateArr[3]}
+            </div>
+            <div className="text-xs mt-1">
+              [ {time1[0]} - {time2[time2.length - 1]} ]
+            </div>
           </div>
-          <div className="text-lg font-bold">₹ 2,400/-</div>
+          <div>
+            <span className="text-xl font-bold">{type}</span>{" "}
+            <span className="text-xs">- {mode}</span>
+          </div>
+          <div className="text-lg font-semibold">
+            ₹ {selectedSlots.length * 3200}
+          </div>
         </div>
         <form className="space-y-4 mt-4 px-10" onSubmit={handleSubmit}>
           <div className="flex space-x-4">
@@ -139,7 +176,11 @@ function Check_Out() {
               <input
                 type="text"
                 placeholder="Anything other than 100 is rejected rn"
-                className="text-sm w-[40%] text-black border-2 border-blue-500 px-4 py-2 rounded-lg"
+                className={`text-sm w-[40%] text-black border-2 px-4 py-2 rounded-lg ${
+                  verify === true && checkbox
+                    ? "border-green-500"
+                    : "border-red-500"
+                }`}
                 name="compId"
                 value={formData.compId}
                 onChange={handleInputChange}
@@ -147,7 +188,9 @@ function Check_Out() {
               />
 
               <button
+                onClick={handleVerify}
                 type="button"
+                value={verify}
                 className="bg-blue-500 text-white rounded-lg px-4 py-2"
               >
                 Verify
