@@ -13,7 +13,7 @@ import "react-calendar/dist/Calendar.css";
 import { useSearchParams } from "next/navigation";
 
 function BookingPage() {
-  const [mode, setMode] = useState("inPerson");
+  const [mode, setMode] = useState("In Person");
   const [date, setDate] = useState(new Date());
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [activeTimeZone, setActiveTimeZone] = useState("");
@@ -119,14 +119,14 @@ function BookingPage() {
           </p>
 
           <div className="flex space-x-16 justify-center text-sm">
-            <div className="flex flex-col items-center space-y-2">
-              {mode === "inPerson" ? (
+            <div className="flex flex-col items-center space-y-2 cursor-pointer">
+              {mode === "In Person" ? (
                 <div className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
                   <HomeIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
-                  onClick={() => handleMode("inPerson")}
+                  onClick={() => handleMode("In Person")}
                   className=" text-[#1f9fe6] rounded-md p-4"
                 >
                   <HomeIcon className="h-7 w-7" />
@@ -135,14 +135,14 @@ function BookingPage() {
               <p>In-Person</p>
             </div>
 
-            <div className="flex flex-col items-center space-y-2">
-              {mode === "VC" ? (
+            <div className="flex flex-col items-center space-y-2 cursor-pointer">
+              {mode === "Video Call" ? (
                 <div className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
                   <VideoCameraIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
-                  onClick={() => handleMode("VC")}
+                  onClick={() => handleMode("Video Call")}
                   className=" text-[#1f9fe6] rounded-md p-4"
                 >
                   <VideoCameraIcon className="h-7 w-7" />
@@ -151,17 +151,17 @@ function BookingPage() {
               <p>Video Call</p>
             </div>
 
-            <div className="flex flex-col items-center space-y-2">
-              {mode === "Call" ? (
+            <div className="flex flex-col items-center space-y-2 cursor-pointer">
+              {mode === "Voice Call" ? (
                 <div
-                  onClick={() => handleMode("Call")}
+                  onClick={() => handleMode("Voice Call")}
                   className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6"
                 >
                   <PhoneIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
-                  onClick={() => handleMode("Call")}
+                  onClick={() => handleMode("Voice Call")}
                   className=" text-[#1f9fe6] rounded-md p-4"
                 >
                   <PhoneIcon className="h-7 w-7" />
@@ -184,7 +184,7 @@ function BookingPage() {
                   key={slot}
                   className={`border-2 text-sm font-semibold text-center rounded-full px-3 py-1 ${
                     selectedSlots.includes(`${slot}`)
-                      ? "border-green-500"
+                      ? "border-black text-white bg-black"
                       : "border-black"
                   }`}
                   onClick={() => handleSlotClick(slot, "morning")}
