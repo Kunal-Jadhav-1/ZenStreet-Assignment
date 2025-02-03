@@ -80,9 +80,10 @@ export default function Prices() {
       )}
 
       {/* Centered Divs */}
-      <div className="flex justify-center items-center w-full mt-16 space-x-10">
-        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-[22%] h-auto mx-2 rounded-xl shadow-lg">
-          <div className="text-center text-4xl my-2 font-semibold text-white items-center">
+      <div className="flex flex-wrap justify-center items-center w-full mt-16 space-x-0 md:space-x-10">
+        {/* Session Card 1 */}
+        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-full md:w-[22%] h-auto mx-2 rounded-xl shadow-lg my-5">
+          <div className="text-center text-4xl my-2 font-semibold text-white">
             ₹{price1}
             <span className="text-[#90cefb] text-base"> / session</span>
           </div>
@@ -138,6 +139,7 @@ export default function Prices() {
               </ul>
             </div>
           </div>
+
           <Link
             href={{
               pathname: "/prices/booking",
@@ -148,12 +150,13 @@ export default function Prices() {
               <button className="bg-white text-[#0065bd] font-semibold px-6 py-2 rounded-full w-[65%] mx-auto">
                 Proceed
               </button>
-            </div>{" "}
+            </div>
           </Link>
         </div>
 
-        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-[22%] h-auto mx-2 rounded-xl shadow-lg">
-          <div className="text-center text-4xl my-2 font-semibold text-white items-center">
+        {/* Session Card 2 */}
+        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-full md:w-[22%] h-auto mx-2 rounded-xl shadow-lg my-5">
+          <div className="text-center text-4xl my-2 font-semibold text-white">
             ₹{price2}
             <span className="text-[#90cefb] text-base"> / session</span>
           </div>
@@ -224,8 +227,9 @@ export default function Prices() {
           </Link>
         </div>
 
-        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-[22%] h-auto mx-2 rounded-xl shadow-lg">
-          <div className="text-center text-4xl my-2 font-semibold text-white items-center">
+        {/* Session Card 3 */}
+        <div className="bg-gradient-to-tr from-[#0065bd] to-[#0190fa] p-4 w-full md:w-[22%] h-auto mx-2 rounded-xl shadow-lg my-5">
+          <div className="text-center text-4xl my-2 font-semibold text-white">
             ₹{price3}
             <span className="text-[#90cefb] text-base"> / session</span>
           </div>
@@ -265,7 +269,7 @@ export default function Prices() {
 
           <div className="text-center my-4">
             <h2 className="text-xl font-semibold text-white mb-1">
-              Couple Therapy
+              Relationship Therapy
             </h2>
             <div className="w-[65%] mx-auto mt-2 border-t-[1px] border-white"></div>
           </div>
@@ -281,10 +285,11 @@ export default function Prices() {
               </ul>
             </div>
           </div>
+
           <Link
             href={{
               pathname: "/prices/booking",
-              query: { type: "Couple Therapy" },
+              query: { type: "Relationship Therapy" },
             }}
           >
             <div className="flex justify-center my-4">

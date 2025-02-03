@@ -98,15 +98,15 @@ function Check_Out() {
           <div>
             <div className="text-sm">{dateArr[0]}</div>
             <div className="text-sm">
-              {dateArr[1]} {dateArr[2]}, {dateArr[3]}
+              {dateArr[1]} {dateArr[2]},{dateArr[3]}
             </div>
             <div className="text-xs mt-1">
-              [ {time1[0]} - {time2[time2.length - 1]} ]
+              [{time1[0]}-{time2[time2.length - 1]}]
             </div>
           </div>
-          <div>
-            <span className="text-xl font-bold">{type}</span>{" "}
-            <span className="text-xs">- {mode}</span>
+          <div className="items-center text-center">
+            <div className="text-xl font-bold">{type}</div>{" "}
+            <div className="text-xs">{mode}</div>
           </div>
           <div className="text-lg font-semibold">
             ₹ {selectedSlots.length * 3200}

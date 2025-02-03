@@ -77,7 +77,7 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-cols-[30%_70%] min-h-screen overflow-hidden">
+    <div className="grid grid-cols-1 min-h-screen overflow-hidden sm:grid-cols-1 md:grid-cols-[30%_70%]">
       {/* Left Column */}
       <div className="bg-[#1f9fe6] flex flex-col justify-between p-6 pb-[125px] space-y-5">
         <button onClick={goBack} className="self-start text-white px-4 py-2 rounded-md flex space-x-3">
@@ -126,7 +126,7 @@ export default function Home() {
 
         {/* Book Session Button */}
         <Link href="/prices" className="self-center text-center font-semibold w-[75%] rounded-full bg-[white] text-[#1f9fe6] py-3 hover:bg-gray-100">
-            Book session
+          Book session
         </Link>
       </div>
 
@@ -154,17 +154,37 @@ export default function Home() {
         </section>
 
         {/* Credentials Section */}
-        <section>
+        <section className="sm:px-4">
           <h2 className="text-2xl mt-2 font-semibold text-gray-900 mb-4">Credentials</h2>
-          <ul className="space-y-2">
-            <li className="text-gray-700 flex items-center"><AcademicCapIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />Ph.D. in Clinical Psychology - Harvard University</li>
-            <li className="text-gray-700 flex items-center"><AcademicCapIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />M.A. in Counseling - University of California, Berkeley</li>
-            <li className="text-gray-700 flex items-center"><ShieldCheckIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />Licensed Professional Counselor (LPC) - State of DEF</li>
-            <li className="text-gray-700 flex items-center"><DocumentTextIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />Certified Cognitive Behavioral Therapist (CBT)</li>
-            <li className="text-gray-700 flex items-center"><UsersIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />Member, American Psychological Association (APA)</li>
-            <li className="text-gray-700 flex items-center"><ShoppingBagIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />10+ years of experience in individual and group therapy</li>
+          <ul className="space-y-2 flex flex-wrap">
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <AcademicCapIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              Ph.D. in Clinical Psychology - Harvard University
+            </li>
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <AcademicCapIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              M.A. in Counseling - University of California, Berkeley
+            </li>
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <ShieldCheckIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              Licensed Professional Counselor (LPC) - State of DEF
+            </li>
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <DocumentTextIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              Certified Cognitive Behavioral Therapist (CBT)
+            </li>
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <UsersIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              Member, American Psychological Association (APA)
+            </li>
+            <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
+              <ShoppingBagIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
+              10+ years of experience in individual and group therapy
+            </li>
           </ul>
         </section>
+
+
 
         {/* Available On Section */}
         <section>
@@ -212,7 +232,7 @@ export default function Home() {
         </section>
 
         {/* I Am From Section */}
-        <section className="grid grid-cols-2 space-x-24">
+        <section className="md:grid md:grid-cols-2 md:space-x-24 md:space-y-2">
           <div className="">
             <h1 className="text-2xl font-semibold text-gray-900 mb-1">I Am From</h1>
             <p className="text-gray-500">Chennai, India</p>
@@ -225,7 +245,7 @@ export default function Home() {
 
         {/* Client Testimonials Section */}
         <section className="pr-48">
-          <div className="flex justify-between items-center">
+          <div className="md:flex md:justify-between items-center">
             <h2 className="text-2xl font-semibold text-gray-900">Client Testimonials</h2>
             {/* Show More / Show Less button */}
             <button
@@ -236,16 +256,18 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pr-16">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {/* Render only 2 cards initially */}
             {testimonials.slice(0, showMore ? testimonials.length : 2).map((testimonial, index) => (
-              <div key={index} className="bg-white p-4 px-16 py-12 my-6 mx-6 rounded-lg shadow-2xl">
+              <div key={index} className="bg-white shadow-xl px-6 py-3">
                 <FaQuoteLeft className="text-2xl text-[#92c2f7] my-2" />
                 <p className="text-gray-700 font-bold text-sm my-1">&quot;{testimonial}&quot;</p>
                 <p className="text-gray-700 font-bold text-sm my-2">Anonymous</p>
               </div>
             ))}
           </div>
+
+
         </section>
       </div>
 

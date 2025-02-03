@@ -96,8 +96,6 @@ function BookingPage() {
 
   const isComplete = selectedSlots.length > 0 && date;
 
-  console.log(selectedSlots);
-
   return (
     <>
       <div className="flex flex-col justify-center items-center my-20">
@@ -121,13 +119,13 @@ function BookingPage() {
           <div className="flex space-x-16 justify-center text-sm">
             <div className="flex flex-col items-center space-y-2 cursor-pointer">
               {mode === "In Person" ? (
-                <div className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
+                <div className="bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
                   <HomeIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
                   onClick={() => handleMode("In Person")}
-                  className=" text-[#1f9fe6] rounded-md p-4"
+                  className="text-[#1f9fe6] rounded-md p-4"
                 >
                   <HomeIcon className="h-7 w-7" />
                 </div>
@@ -137,13 +135,13 @@ function BookingPage() {
 
             <div className="flex flex-col items-center space-y-2 cursor-pointer">
               {mode === "Video Call" ? (
-                <div className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
+                <div className="bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6">
                   <VideoCameraIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
                   onClick={() => handleMode("Video Call")}
-                  className=" text-[#1f9fe6] rounded-md p-4"
+                  className="text-[#1f9fe6] rounded-md p-4"
                 >
                   <VideoCameraIcon className="h-7 w-7" />
                 </div>
@@ -155,14 +153,14 @@ function BookingPage() {
               {mode === "Voice Call" ? (
                 <div
                   onClick={() => handleMode("Voice Call")}
-                  className=" bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6"
+                  className="bg-[#1f9fe6] text-[#c6e3ff] rounded-md p-6"
                 >
                   <PhoneIcon className="h-7 w-7" />
                 </div>
               ) : (
                 <div
                   onClick={() => handleMode("Voice Call")}
-                  className=" text-[#1f9fe6] rounded-md p-4"
+                  className="text-[#1f9fe6] rounded-md p-4"
                 >
                   <PhoneIcon className="h-7 w-7" />
                 </div>
@@ -175,7 +173,8 @@ function BookingPage() {
 
       <div className="px-24">
         <p className="self-start font-semibold text-xl">Select Slot</p>
-        <div className="flex justify-center space-x-16 my-8">
+        <div className="flex flex-wrap justify-center md:space-x-8 my-8">
+          {/* Morning Slots */}
           <div className="flex flex-col">
             <p className="text-gray-500 text-base">Morning</p>
             <div className="grid grid-cols-2 gap-4 my-4">
@@ -185,7 +184,7 @@ function BookingPage() {
                   className={`border-2 text-sm font-semibold text-center rounded-full px-3 py-1 ${
                     selectedSlots.includes(`${slot}`)
                       ? "border-black text-white bg-black"
-                      : "border-black"
+                      : "border-black text-[#0065bd]"
                   }`}
                   onClick={() => handleSlotClick(slot, "morning")}
                 >
@@ -194,6 +193,8 @@ function BookingPage() {
               ))}
             </div>
           </div>
+
+          {/* Afternoon Slots */}
           <div className="flex flex-col">
             <p className="text-gray-500 text-base">Afternoon</p>
             <div className="grid grid-cols-2 gap-4 my-4">
@@ -202,8 +203,8 @@ function BookingPage() {
                   key={slot}
                   className={`border-2 text-sm font-semibold text-center rounded-full px-3 py-1 ${
                     selectedSlots.includes(`${slot}`)
-                      ? "border-green-500"
-                      : "border-black"
+                      ? "border-green-500 text-white bg-green-500"
+                      : "border-black text-[#0065bd]"
                   }`}
                   onClick={() => handleSlotClick(slot, "afternoon")}
                 >
@@ -212,6 +213,8 @@ function BookingPage() {
               ))}
             </div>
           </div>
+
+          {/* Evening Slots */}
           <div className="flex flex-col">
             <p className="text-gray-500 text-base">Evening</p>
             <div className="grid grid-cols-2 gap-4 my-4">
@@ -220,8 +223,8 @@ function BookingPage() {
                   key={slot}
                   className={`border-2 text-sm font-semibold text-center rounded-full px-3 py-1 ${
                     selectedSlots.includes(`${slot}`)
-                      ? "border-green-500"
-                      : "border-black"
+                      ? "border-green-500 text-white bg-green-500"
+                      : "border-black text-[#0065bd]"
                   }`}
                   onClick={() => handleSlotClick(slot, "evening")}
                 >
@@ -231,12 +234,15 @@ function BookingPage() {
             </div>
           </div>
         </div>
+
+        {/* Calendar */}
         <div className="flex justify-center my-4">
           <div>
-            <Calendar onChange={handleDateChange} value={date}></Calendar>
+            <Calendar onChange={handleDateChange} value={date} />
           </div>
         </div>
 
+        {/* Proceed Button */}
         {isComplete ? (
           <Link
             href={{
