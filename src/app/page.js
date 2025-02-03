@@ -156,7 +156,7 @@ export default function Home() {
         {/* Credentials Section */}
         <section className="sm:px-4">
           <h2 className="text-2xl mt-2 font-semibold text-gray-900 mb-4">Credentials</h2>
-          <ul className="space-y-2 flex flex-wrap">
+          <ul className="space-y-2">
             <li className="text-gray-700 flex items-center w-full sm:w-auto truncate">
               <AcademicCapIcon className="h-5 w-5 mr-1 text-[#1f9fe6]" />
               Ph.D. in Clinical Psychology - Harvard University
